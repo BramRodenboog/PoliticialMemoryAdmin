@@ -1,0 +1,36 @@
+.title {
+    padding-bottom: 2rem;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 14px;
+    font-family: system-ui, sans-serif;
+    border: 1px solid #cccccc;
+}
+
+table th,
+table td {
+    border: 1px solid #cccccc;
+}
+
+table th {
+    padding: 10px;
+    text-align: left;
+    background-color: #1c717e;
+    color: #e7e7e8;
+}
+
+table td {
+    padding: 10px;
+    text-align: left;
+}
+
+table tbody tr:nth-child(even) td {
+    background-color: #f8fafc;
+}
+
+table tbody tr:hover td {
+    background-color: #e0f2fe;
+}
