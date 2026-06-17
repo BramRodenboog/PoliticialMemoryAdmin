@@ -1,19 +1,31 @@
 <div class="login">
-  <form (ngSubmit)="onLogin()">
-    <h1>Login</h1>
 
-    <label> Gebruikersnaam </label>
 
-    <input type="text" [(ngModel)]="username" name="username" required />
+	<form (ngSubmit)="onLogin()">
+		<h1>
+			Login
+		</h1>
 
-    <label> Wachtwoord </label>
+		<label>
+			Gebruikersnaam
+		</label>
 
-    <input type="password" [(ngModel)]="password" name="password" required />
+		<input type="text" [(ngModel)]="username" name="username" required />
 
-    <button type="submit">Inloggen</button>
+		<label>
+			Wachtwoord
+		</label>
 
-    <p *ngIf="error" class="error">
-      {{ error }}
-    </p>
-  </form>
+		<input type="password" [(ngModel)]="password" name="password" required />
+
+		<button type="submit">
+			Inloggen
+		</button>
+
+		<p *ngIf="error" class="error">
+			{{error}}
+		</p>
+	</form>
+
+
 </div>
