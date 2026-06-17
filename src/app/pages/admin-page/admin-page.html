@@ -1,63 +1,81 @@
-<div>
-    <h1 class="title">users (aantal):</h1>
+<div class="dashboard">
+	<h1>
+		Admin Dashboard
+	</h1>
 
-    <div style="overflow-x: auto;">
-        <div style="border-radius: 5px; overflow: hidden; display: inline-block; width: 100%;">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>API</th>
+	<div class="stats">
+		<div class="card">
+			<h2>
+				{{ userCount }}
+			</h2>
+			<p>
+				Spelers
+			</p>
+		</div>
 
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>ttest</td>
-                        <td></td>
-                        <td></td>
+		<div class="card">
+			<h2>
+				{{ gameCount }}
+			</h2>
 
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+			<p>
+				Games
+			</p>
+		</div>
+	</div>
 
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <h1>Games (aantal): </h1>
-    <h1>meest popularen api's</h1>
-    <div style="overflow-x: auto;">
-        <div style="border-radius: 5px; overflow: hidden; display: inline-block; width: 100%;">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>API</th>
+	<h2>
+		Gebruikers
+	</h2>
 
-                    </tr>
-                </thead>
-                <tbody>☰
-                    <tr>
-                        <td>ttest</td>
-                        <td></td>
-                        <td></td>
+	<div class="list">
+		<div class="item" *ngFor="let user of users">
+			<h3>
+				{{ user.username }}
+			</h3>
+			<p>
+				{{ user.email }}
+			</p>
+		</div>
+	</div>
 
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+	<h2>
+		Games
+	</h2>
 
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <h1>leaderboard</h1>
+	<div class="games">
+		<div class="game" *ngFor="let game of games">
+			<p>
+				<b>Game:</b>
+				{{ game.api }}
+			</p>
+
+			<p>
+				<b>Score:</b>
+				{{ game.score }}
+			</p>
+
+			<p>
+				<b>Datum:</b>
+				{{ game.day }}
+			</p>
+		</div>
+	</div>
+
+	<h2>
+		Populaire API's
+	</h2>
+
+	<div class="list">
+		<div class="item" *ngFor="let api of populairApis">
+			<h3>
+				{{ api.api }}
+			</h3>
+
+			<p>
+				Aantal:
+				{{ api.aantal }}
+			</p>
+		</div>
+	</div>
 </div>

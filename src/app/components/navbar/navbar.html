@@ -1,4 +1,10 @@
 <nav class="navbar">
   <h1>PoliticialMemoryAdmin</h1>
-  <a onclick=(console.log(window)) id="hamburger" class="icon" >&#9776;</a>
+  <button class="hamburger" (click)="openHamburger()">&#9776;</button>
+
+  <div class="menu" [class.show]="menuOpen">
+    <a routerLink="/"> Home </a>
+    <a routerLink="/admin"> Admin </a>
+    <a routerLink="/login"> Login </a>
+  </div>
 </nav>

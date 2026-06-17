@@ -1,0 +1,52 @@
+.home {
+  min-height: calc(100vh - 70px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: #f5f7fa;
+}
+
+.hero {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+  max-width: 500px;
+  box-shadow: 0 5px 20px #0002;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #1c717e;
+}
+
+p {
+  color: #555;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.buttons a {
+  background: #1c717e;
+  color: white;
+  padding: 1rem;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+@media (min-width: 768px) {
+  .buttons {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .buttons a {
+    min-width: 120px;
+  }
+}

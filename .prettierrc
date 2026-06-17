@@ -1,11 +1,34 @@
 {
   "printWidth": 100,
   "singleQuote": true,
+  "tabWidth": 2,
+  "useTabs": false,
   "overrides": [
     {
-      "files": "*.html",
+      "files": "**/*.html",
       "options": {
-        "parser": "angular"
+        "parser": "angular",
+        "tabWidth": 2,
+        "useTabs": false
+      }
+    },
+    {
+      "files": "**/*.ts",
+      "options": {
+        "parser": "typescript",
+        "tabWidth": 2,
+        "useTabs": false
+      }
+    },
+    {
+      "files": [
+        "**/*.css",
+        "**/*.scss",
+        "**/*.sass"
+      ],
+      "options": {
+        "tabWidth": 2,
+        "useTabs": false
       }
     }
   ]
