@@ -26,3 +26,17 @@
   padding: 1rem;
   margin-top: 4vh;
 }
+
+.back-button {
+  display: inline-block;
+  margin: 1rem 0;
+  background: #1c717e;
+  color: white;
+  padding: 0.5rem 1rem;
+  text-decoration: underline;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
