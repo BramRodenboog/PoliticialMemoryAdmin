@@ -21,11 +21,7 @@
       }
     },
     {
-      "files": [
-        "**/*.css",
-        "**/*.scss",
-        "**/*.sass"
-      ],
+      "files": ["**/*.css", "**/*.scss", "**/*.sass"],
       "options": {
         "tabWidth": 2,
         "useTabs": false

@@ -5,9 +5,5 @@ import { provideHighcharts } from 'highcharts-angular';
 import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
-  providers: [
-    provideBrowserGlobalErrorListeners(),
-    provideRouter(routes),
-    provideHighcharts()
-  ],
+  providers: [provideBrowserGlobalErrorListeners(), provideRouter(routes), provideHighcharts()],
 };

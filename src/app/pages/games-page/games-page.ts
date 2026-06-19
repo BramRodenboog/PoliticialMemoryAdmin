@@ -17,21 +17,21 @@ export class GamesPage implements OnInit {
       type: 'column',
     },
     title: {
-      text: 'Loading...'
+      text: 'Loading...',
     },
     xAxis: {
-      categories: []
+      categories: [],
     },
-    series: [{
-      type: 'column',
-      data: []
-    }]
+    series: [
+      {
+        type: 'column',
+        data: [],
+      },
+    ],
   };
   games = signal<any[]>([]);
 
-  constructor(
-    private http: HttpClient,
-  ) { }
+  constructor(private http: HttpClient) {}
 
   headers() {
     return {
@@ -61,9 +61,9 @@ export class GamesPage implements OnInit {
             name: 'Spellen',
             showInLegend: false,
             data: chartData.map((day) => day.count),
-          }
-        ]
-      }
+          },
+        ],
+      };
     });
   }
 
@@ -77,7 +77,7 @@ export class GamesPage implements OnInit {
       return {
         key: date.toISOString().split('T')[0],
         label: date.toLocaleDateString('nl-NL', { day: 'numeric', month: 'long' }),
-        count: 0
+        count: 0,
       };
     }).reverse();
 
@@ -92,4 +92,4 @@ export class GamesPage implements OnInit {
 
     return days;
   }
-};
+}
