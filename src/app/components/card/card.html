@@ -1,0 +1,17 @@
+<div class="card">
+  <div>
+    <h2>
+      {{ title() }}
+    </h2>
+
+    <p>
+      {{ description() }}
+    </p>
+  </div>
+
+  @if (link()) {
+    <a [routerLink]="link()">
+        {{ linkText() }}
+    </a>
+  }
+</div>

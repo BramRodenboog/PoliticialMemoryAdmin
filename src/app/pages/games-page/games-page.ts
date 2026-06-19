@@ -1,12 +1,14 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit, signal } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import { HighchartsChartComponent } from 'highcharts-angular';
+import { AdminService } from '../../services/AdminService';
+import { Button } from "../../components/button/button";
+import { Card } from '../../components/card/card';
 
 @Component({
   selector: 'app-games-page',
   standalone: true,
-  imports: [HighchartsChartComponent],
+  imports: [HighchartsChartComponent, Button, Card],
   templateUrl: './games-page.html',
   styleUrl: './games-page.css',
 })
@@ -22,27 +24,30 @@ export class GamesPage implements OnInit {
     xAxis: {
       categories: [],
     },
+    yAxis: {
+      title: {
+        text: 'Aantal spellen',
+      },
+    },
     series: [
       {
         type: 'column',
         data: [],
+        showInLegend: false,
       },
     ],
   };
   games = signal<any[]>([]);
+  dates = signal<Record<string, number>>({});
 
-  constructor(private http: HttpClient) {}
-
-  headers() {
-    return {
-      headers: new HttpHeaders({
-        Authorization: 'Bearer ' + localStorage.getItem('token'),
-      }),
-    };
-  }
+  constructor(private adminService: AdminService) {}
 
   ngOnInit() {
-    this.http.get<any>('http://localhost:8000/admin/games', this.headers()).subscribe((data) => {
+    this.adminService.getDates().subscribe((data) => {
+      this.dates.set(data);
+    });
+
+    this.adminService.getGames().subscribe((data) => {
       this.games.set(data);
 
       const chartData = this.getChartData();
@@ -74,21 +79,14 @@ export class GamesPage implements OnInit {
       const date = new Date(today);
       date.setDate(today.getDate() - i);
 
+      const key = date.toISOString().split('T')[0];
+
       return {
-        key: date.toISOString().split('T')[0],
+        key,
         label: date.toLocaleDateString('nl-NL', { day: 'numeric', month: 'long' }),
-        count: 0,
+        count: this.dates()?.[key] || 0,
       };
     }).reverse();
-
-    this.games().forEach((game) => {
-      const gameDate = new Date(game.date.date.substring(0, 10)).toISOString().split('T')[0];
-
-      const day = days.find((d) => d.key === gameDate);
-      if (day) {
-        day.count++;
-      }
-    });
 
     return days;
   }

@@ -3,6 +3,7 @@ import { HomePage } from './pages/home-page/home-page';
 import { AdminPage } from './pages/admin-page/admin-page';
 import { Login } from './pages/login/login';
 import { GamesPage } from './pages/games-page/games-page';
+import { UserPage } from './pages/user-page/user-page';
 
 export const routes: Routes = [
   {
@@ -21,4 +22,8 @@ export const routes: Routes = [
     path: 'games',
     component: GamesPage,
   },
+  {
+    path: 'users',
+    component: UserPage,
+  }
 ];

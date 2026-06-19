@@ -1,0 +1,24 @@
+<app-button
+    label="← Terug"
+    routerLink="/admin"
+/>
+
+<app-card 
+    [title]="users().length.toString()"
+    description="Gebruikers"
+/>
+
+<h2 class="title">Gebruikers</h2>
+
+<div class="list">
+    @for (user of users(); track $index) {
+        <div class="item">
+        <h3>
+            {{ user.username }}
+        </h3>
+        <p>
+            {{ user.email }}
+        </p>
+        </div>
+    }
+</div>

@@ -1,42 +1,66 @@
 import { Component, OnInit, signal } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
 import { AdminService } from '../../services/AdminService';
+import { HighchartsChartComponent } from 'highcharts-angular';
+import Highcharts from 'highcharts';
+import { Card } from '../../components/card/card';
 
 @Component({
   selector: 'app-admin-page',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, HighchartsChartComponent, Card],
   templateUrl: './admin-page.html',
   styleUrl: './admin-page.css',
 })
 export class AdminPage implements OnInit {
-  users = signal<any>([]);
-  games = signal<any>([]);
   populairApis = signal<any>([]);
 
   userCount = signal<number>(0);
   gameCount = signal<number>(0);
 
+  Highcharts: typeof Highcharts = Highcharts;
+    chartOptions: Highcharts.Options = {
+      chart: {
+        type: 'pie',
+      },
+      title: {
+        text: 'Loading...',
+      },
+      series: [
+        {
+          type: 'pie',
+          data: [],
+        },
+      ],
+    };
+
   constructor(private adminService: AdminService) {}
 
   ngOnInit() {
-    this.adminService.getPlayers().subscribe((data) => {
-      this.users.set(data);
-      this.userCount.set(data.length);
-    });
     this.adminService.getAggregate().subscribe((data) => {
       this.gameCount.set(data[0].aantal_spellen);
       this.userCount.set(data[1].aantal_spelers);
-      console.log(data);
-      this.populairApis.set([
-        ...this.populairApis(),
-        ...data[2].sort((a: any, b: any) => b.aantal - a.aantal),
-      ]);
-    });
-    this.adminService.getGames().subscribe((data) => {
-      this.games.set([...this.games(), ...data]);
+
+      this.populairApis.set(data[2].sort((a: any, b: any) => b.aantal - a.aantal));
+
+      this.chartOptions = {
+        ...this.chartOptions,
+        title: {
+          text: 'Verdeling van API\'s',
+        },
+        series: [
+          {
+            type: 'pie',
+            name: 'API',
+            showInLegend: false,
+            data: this.populairApis().map((api: any) => ({
+              name: api.api,
+              y: api.aantal,
+            })),
+          },
+        ],
+      };
     });
   }
 }

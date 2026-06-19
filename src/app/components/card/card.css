@@ -1,0 +1,20 @@
+.card {
+  background: #1c717e;
+  color: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card h2 {
+  font-size: 3rem;
+  margin: 0;
+}
+
+.card a {
+  color: white;
+  text-decoration: underline;
+  font-size: 1.5rem;
+}

@@ -1,0 +1,14 @@
+import { Component, input } from '@angular/core';
+import { RouterLink } from '@angular/router';
+
+@Component({
+  selector: 'app-button',
+  imports: [RouterLink],
+  templateUrl: './button.html',
+  styleUrl: './button.css',
+})
+export class Button {
+  label = input.required<string>();
+  routerLink = input.required<string>();
+  style = input<string>();
+}

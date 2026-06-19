@@ -28,4 +28,8 @@ export class AdminService {
   getAggregate() {
     return this.http.get<any>(`${this.baseUrl}/aggregate`, this.headers());
   }
+
+  getDates() {
+    return this.http.get<any>(`${this.baseUrl}/dates`, this.headers());
+  }
 }

@@ -1,24 +1,3 @@
-.card {
-  background: #1c717e;
-  color: white;
-  padding: 1.5rem;
-  border-radius: 12px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.card h2 {
-  font-size: 3rem;
-  margin: 0;
-}
-
-.card a {
-  color: white;
-  text-decoration: underline;
-  font-size: 1.5rem;
-}
-
 .graph {
   background: white;
   border: 1px solid #ddd;
@@ -27,16 +6,26 @@
   margin-top: 4vh;
 }
 
-.back-button {
-  display: inline-block;
-  margin: 1rem 0;
-  background: #1c717e;
-  color: white;
-  padding: 0.5rem 1rem;
-  text-decoration: none;
+.game {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.games {
+  display: grid;
+  gap: 1rem;
+}
+
+.title {
   font-size: 1.5rem;
   font-weight: bold;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
+  margin: 1rem 0;
+}
+
+@media (min-width: 768px) {
+  .games {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
