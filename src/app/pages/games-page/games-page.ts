@@ -1,8 +1,8 @@
 import { Component, OnInit, signal } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import { HighchartsChartComponent } from 'highcharts-angular';
-import { AdminService } from '../../services/AdminService';
-import { Button } from "../../components/button/button";
+import { AdminService } from '../../services/admin.service';
+import { Button } from '../../components/button/button';
 import { Card } from '../../components/card/card';
 
 @Component({

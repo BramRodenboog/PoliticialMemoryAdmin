@@ -1,7 +1,7 @@
 import { Component, OnInit, signal } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
-import { AdminService } from '../../services/AdminService';
+import { AdminService } from '../../services/admin.service';
 import { HighchartsChartComponent } from 'highcharts-angular';
 import Highcharts from 'highcharts';
 import { Card } from '../../components/card/card';
@@ -20,20 +20,20 @@ export class AdminPage implements OnInit {
   gameCount = signal<number>(0);
 
   Highcharts: typeof Highcharts = Highcharts;
-    chartOptions: Highcharts.Options = {
-      chart: {
+  chartOptions: Highcharts.Options = {
+    chart: {
+      type: 'pie',
+    },
+    title: {
+      text: 'Loading...',
+    },
+    series: [
+      {
         type: 'pie',
+        data: [],
       },
-      title: {
-        text: 'Loading...',
-      },
-      series: [
-        {
-          type: 'pie',
-          data: [],
-        },
-      ],
-    };
+    ],
+  };
 
   constructor(private adminService: AdminService) {}
 
@@ -47,7 +47,7 @@ export class AdminPage implements OnInit {
       this.chartOptions = {
         ...this.chartOptions,
         title: {
-          text: 'Verdeling van API\'s',
+          text: "Verdeling van API's",
         },
         series: [
           {

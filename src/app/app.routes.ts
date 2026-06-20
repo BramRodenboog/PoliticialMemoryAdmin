@@ -4,6 +4,7 @@ import { AdminPage } from './pages/admin-page/admin-page';
 import { Login } from './pages/login/login';
 import { GamesPage } from './pages/games-page/games-page';
 import { UserPage } from './pages/user-page/user-page';
+import { authGuard } from './guards/auth-guard';
 
 export const routes: Routes = [
   {
@@ -13,6 +14,7 @@ export const routes: Routes = [
   {
     path: 'admin',
     component: AdminPage,
+    canActivate: [authGuard],
   },
   {
     path: 'login',
@@ -21,9 +23,11 @@ export const routes: Routes = [
   {
     path: 'games',
     component: GamesPage,
+    canActivate: [authGuard],
   },
   {
     path: 'users',
     component: UserPage,
-  }
+    canActivate: [authGuard],
+  },
 ];

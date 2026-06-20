@@ -1,7 +1,7 @@
 import { Component, signal } from '@angular/core';
-import { Card } from "../../components/card/card";
+import { Card } from '../../components/card/card';
 import { Button } from '../../components/button/button';
-import { AdminService } from '../../services/AdminService';
+import { AdminService } from '../../services/admin.service';
 
 @Component({
   selector: 'app-user-page',

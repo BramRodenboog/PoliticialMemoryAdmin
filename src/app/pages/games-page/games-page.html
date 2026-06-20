@@ -1,19 +1,10 @@
-<app-button
-    label="← Terug"
-    routerLink="/admin"
-/>
+<app-button label="← Terug" routerLink="/admin" />
 
-<app-card 
-    [title]="games().length.toString()"
-    description="Games"
-/>
+<app-card [title]="games().length.toString()" description="Games" />
 
 <div>
   <div class="graph">
-    <highcharts-chart
-      [options]="chartOptions"
-      style="width: 100%; height: 400px; display: block"
-    />
+    <highcharts-chart [options]="chartOptions" style="width: 100%; height: 400px; display: block" />
   </div>
 
   <h2 class="title">Games</h2>

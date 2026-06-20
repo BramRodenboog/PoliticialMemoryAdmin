@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -14,29 +14,23 @@ import { CommonModule } from '@angular/common';
 export class Login {
   username = '';
   password = '';
-  error = '';
+  error = signal('');
 
   constructor(
-    private http: HttpClient,
     private router: Router,
+    private authService: AuthService,
   ) {}
 
   onLogin() {
-    this.error = '';
+    this.error.set('');
 
-    this.http
-      .post<{ token: string }>('http://localhost:8000/memory/login', {
-        username: this.username,
-        password: this.password,
-      })
-      .subscribe({
-        next: (data) => {
-          localStorage.setItem('token', data.token);
-          this.router.navigate(['/admin']);
-        },
-        error: () => {
-          this.error = 'Foute gebruikersnaam of wachtwoord';
-        },
-      });
+    this.authService.login(this.username, this.password).subscribe({
+      next: () => {
+        this.router.navigate(['/admin']);
+      },
+      error: () => {
+        this.error.set('Foute gebruikersnaam of wachtwoord');
+      },
+    });
   }
 }

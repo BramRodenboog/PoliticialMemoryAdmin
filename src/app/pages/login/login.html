@@ -12,9 +12,9 @@
 
     <button type="submit">Inloggen</button>
 
-    @if (error) {
+    @if (error()) {
       <p class="error">
-        {{ error }}
+        {{ error() }}
       </p>
     }
   </form>

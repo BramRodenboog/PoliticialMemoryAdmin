@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,8 +11,15 @@ import { RouterLink } from '@angular/router';
 })
 export class Navbar {
   menuOpen = false;
+  authService = inject(AuthService);
+  router = inject(Router);
 
   openHamburger() {
     this.menuOpen = !this.menuOpen;
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 }
